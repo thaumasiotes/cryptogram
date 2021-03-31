@@ -9,7 +9,9 @@ cg = {
         let ciphertext =
             document.querySelector('#cg_ciphertext > textarea').value;
         let lines = ciphertext.trim().split('\n');
+        this.count_frequencies(lines);
         // display sorted list of characters
+        this.show_mapping();
         // apply character mapping, if present
         // display plaintext
         this.show_plaintext(lines);

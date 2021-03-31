@@ -30,7 +30,23 @@ body {
 
 #cg_map > .cg_map_grid {
     display: grid;
-    grid-template-columns: 1em 1fr 1em;
+    grid-template-columns: 1.5em auto 1.5em;
+}
+
+/* Color every other row */
+.cg_map_grid > :nth-child(6n+1), .cg_map_grid > :nth-child(6n+2) {
+    background-color: paleturquoise;
+}
+
+/* Ciphertext glyphs */
+.cg_map_grid > :nth-child(3n+1) {
+    text-align: center;
+}
+
+/* Frequency numbers */
+.cg_map_grid > :nth-child(3n+2) {
+    text-align: right;
+    padding-right: 10px;
 }
 
 #cg_plaintext {
