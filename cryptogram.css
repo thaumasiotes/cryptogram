@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+#cg_panel {
+    background-color: plum;
+    display: flex;
+    height: 100%;
+}
+
+#cg_ciphertext {
+    background-color: lightskyblue;
+    width: 30%;
+    height: 30em;
+}
+
+#cg_ciphertext textarea {
+    width: 95%;
+    height: 95%;
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+}
+
+#cg_map {
+    background-color: lavender;
+    width: 30%;
+    height: 30em;
+}
+
+#cg_plaintext {
+    background-color: seagreen;
+    width: 30%;
+    height: 30em;
+
+    overflow-y: auto;
+}
+
+#cg_plaintext > span {
+}
+
+#cg_plaintext p {
+    background-color: ivory;
+}
