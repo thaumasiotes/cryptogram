@@ -14,7 +14,7 @@ body {
     height: 30em;
 }
 
-#cg_ciphertext textarea {
+#cg_ciphertext > textarea {
     width: 95%;
     height: 95%;
     margin-left: 2.5%;
@@ -25,6 +25,12 @@ body {
     background-color: lavender;
     width: 30%;
     height: 30em;
+    overflow-y: scroll;
+}
+
+#cg_map > .cg_map_grid {
+    display: grid;
+    grid-template-columns: 1em 1fr 1em;
 }
 
 #cg_plaintext {
