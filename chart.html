@@ -15,5 +15,17 @@
       </div>
       <div id="cg_plaintext"><span></span></div>
     </div>
+    <div id="cg_buttons">
+      <span class="cg_checkbox">
+        <input type="checkbox" id="cg_alpha_only" checked
+               onchange="cg.toggle_alpha_only()">
+        <label for="cg_alpha_only">Alphabetic only</label>
+      </span>
+      <span class="cg_checkbox">
+        <input type="checkbox" id="cg_case_insensitive" checked
+               onchange="cg.toggle_case_insensitive()">
+        <label for="cg_case_insensitive">Case-insensitive</label>
+      </span>
+    </div>
   </body>
 </html>

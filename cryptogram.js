@@ -1,7 +1,10 @@
 cg = {
 
-    freq_count: new Map(),
+    // options
+    alpha_only: true,
+    case_insensitive: true,
 
+    freq_count: new Map(),
     mapping: new Map(),
 
     handle_ciphertext: function() {
@@ -21,11 +24,17 @@ cg = {
         this.freq_count.clear();
         this.freq_count.total_chars = 0;
         for(const line of lines) {
-            for(const chr of line) {
+            for(let chr of line) {
+                if(this.case_insensitive) {
+                    chr = chr.toUpperCase();
+                }
+                if( this.alpha_only && !(/[A-Z]/i.test(chr)) ) {
+                    continue;
+                }
                 let count = this.freq_count.get(chr) || 0;
                 this.freq_count.set(chr, count + 1);
+                this.freq_count.total_chars += 1;
             }
-            this.freq_count.total_chars += line.length;
         }
     },
 
@@ -84,6 +93,20 @@ cg = {
         span.appendChild(para);
 
         document.querySelector('#cg_plaintext > span').replaceWith(span);
+    },
+
+    toggle_alpha_only: function() {
+        let alpha_only_checkbox =
+            document.getElementById('cg_alpha_only');
+        this.alpha_only = alpha_only_checkbox.checked;
+        this.handle_ciphertext();
+    },
+
+    toggle_case_insensitive: function() {
+        let case_insensitive_checkbox =
+            document.getElementById('cg_case_insensitive');
+        this.case_insensitive = case_insensitive_checkbox.checked;
+        this.handle_ciphertext();
     },
 
 }

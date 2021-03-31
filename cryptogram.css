@@ -3,15 +3,16 @@ body {
 }
 
 #cg_panel {
+    height: 80%;
     background-color: plum;
     display: flex;
-    height: 100%;
+    justify-content: center;
 }
 
 #cg_ciphertext {
     background-color: lightskyblue;
-    width: 30%;
-    height: 30em;
+    width: 3.5in;
+    height: 100%;
 }
 
 #cg_ciphertext > textarea {
@@ -23,14 +24,14 @@ body {
 
 #cg_map {
     background-color: lavender;
-    width: 30%;
-    height: 30em;
-    overflow-y: scroll;
+    height: 100%;
+    overflow-y: auto;
 }
 
 #cg_map > .cg_map_grid {
     display: grid;
     grid-template-columns: 1.5em auto 1.5em;
+    padding-right: 10px;
 }
 
 /* Color every other row */
@@ -47,12 +48,13 @@ body {
 .cg_map_grid > :nth-child(3n+2) {
     text-align: right;
     padding-right: 10px;
+    padding-left: 5px;
 }
 
 #cg_plaintext {
     background-color: seagreen;
-    width: 30%;
-    height: 30em;
+    width: 3.5in;
+    height: 100%;
 
     overflow-y: auto;
 }
@@ -62,4 +64,19 @@ body {
 
 #cg_plaintext p {
     background-color: ivory;
+}
+
+#cg_buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.cg_checkbox {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    margin-left: 7px;
+    margin-right: 7px;
+    padding-right: 3px;
 }
