@@ -51,6 +51,9 @@ body {
     padding-left: 5px;
 }
 
+.cg_map_grid > input {
+}
+
 #cg_plaintext {
     background-color: seagreen;
     width: 3.5in;
@@ -66,17 +69,37 @@ body {
     background-color: ivory;
 }
 
-#cg_buttons {
+.cg_buttons {
     display: flex;
-    justify-content: center;
     padding-top: 5px;
+}
+
+.cg_leftie {
+    flex: 1 50%;
+    background-color: seagreen;
+    display: flex;
+    justify-content: right;
+}
+
+.cg_rightie {
+    flex: 1 50%;
+    background-color: lightskyblue;
+    display: flex;
+    justify-content: left;
+}
+
+.cg_leftie > * {
+    margin-right: 8px;
+}
+
+.cg_rightie > * {
+    margin-left: 8px;
 }
 
 .cg_checkbox {
     border: 1px;
     border-color: black;
     border-style: solid;
-    margin-left: 7px;
-    margin-right: 7px;
+    background-color: ivory;
     padding-right: 3px;
 }

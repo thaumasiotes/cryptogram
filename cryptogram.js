@@ -11,13 +11,14 @@ cg = {
         // process for character frequency
         let ciphertext =
             document.querySelector('#cg_ciphertext > textarea').value;
-        let lines = ciphertext.trim().split('\n');
-        this.count_frequencies(lines);
+        let ct_lines = ciphertext.trim().split('\n');
+        this.count_frequencies(ct_lines);
         // display sorted list of characters
         this.show_mapping();
         // apply character mapping, if present
+        let pt_lines = this.apply_mapping(ct_lines);
         // display plaintext
-        this.show_plaintext(lines);
+        this.show_plaintext(pt_lines);
     },
 
     count_frequencies: function(lines) {
@@ -28,7 +29,7 @@ cg = {
                 if(this.case_insensitive) {
                     chr = chr.toUpperCase();
                 }
-                if( this.alpha_only && !(/[A-Z]/i.test(chr)) ) {
+                if( this.alpha_only && (/[^A-Z]/i.test(chr)) ) {
                     continue;
                 }
                 let count = this.freq_count.get(chr) || 0;
@@ -58,6 +59,12 @@ cg = {
             if( this.mapping.has(chr) ) {
                 pt_glyph.value = this.mapping.get(chr);
             }
+            pt_glyph.onfocus = ( (e) => e.target.select() );
+            pt_glyph.oninput = ( () => {
+                pt_glyph.value = pt_glyph.value.substr(0,1);
+                this.mapping.set(chr, pt_glyph.value);
+                this.handle_ciphertext();
+            } );
 
             map_panel.appendChild(ct_glyph);
             map_panel.appendChild(frequency);
@@ -67,7 +74,38 @@ cg = {
         old_map_panel.replaceWith(map_panel);
     },
 
-    apply_mapping: function() {
+    apply_mapping: function(ct_lines) {
+        let pt_lines = [];
+        for(const ct_line of ct_lines) {
+            let pt_line = "";
+            for(const chr of ct_line) {
+                let normalized_chr = chr;
+                if(this.case_insensitive) {
+                    normalized_chr = chr.toUpperCase();
+                }
+                if(this.alpha_only) {
+                    /* If this.mapping has a leftover mapping for a
+                       non-alphabetic character, we need to ignore that. */
+                    if( /[^A-Z]/i.test(chr) ) {
+                        pt_line += chr;
+                        continue;
+                    }
+                }
+
+                let pt_chr = this.mapping.get(normalized_chr) || chr;
+                if(this.case_insensitive) {
+                    if( /[a-z]/.test(chr) ) {
+                        pt_chr = pt_chr.toLowerCase();
+                    }
+                    if( /[A-Z]/.test(chr) ) {
+                        pt_chr = pt_chr.toUpperCase();
+                    }
+                }
+                pt_line += pt_chr;
+            }
+            pt_lines.push(pt_line);
+        }
+        return pt_lines;
     },
 
     show_plaintext: function(lines) {
@@ -106,6 +144,24 @@ cg = {
         let case_insensitive_checkbox =
             document.getElementById('cg_case_insensitive');
         this.case_insensitive = case_insensitive_checkbox.checked;
+        this.handle_ciphertext();
+    },
+
+    reset_key: function() {
+        this.mapping.clear();
+        this.handle_ciphertext();
+    },
+
+    rot13: function() {
+        this.mapping.clear();
+        let a = 'a'.charCodeAt(0);
+        for(let offset = 0; offset < 26; offset++) {
+            let code = (offset + 13) % 26;
+            let old_chr = String.fromCharCode(a + offset);
+            let new_chr = String.fromCharCode(a + code);
+            this.mapping.set(old_chr, new_chr);
+            this.mapping.set(old_chr.toUpperCase(), new_chr.toUpperCase());
+        }
         this.handle_ciphertext();
     },
 
