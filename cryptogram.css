@@ -23,13 +23,12 @@ body {
 
 #cg_map {
     height: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 #cg_map > .cg_map_grid {
     display: grid;
     grid-template-columns: 1.5em auto 1.5em;
-    padding-right: 10px;
 }
 
 /* Color every other row */
