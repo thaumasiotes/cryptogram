@@ -5,6 +5,7 @@ body {
 
 #cg_panel {
     height: 80%;
+    margin-top: 8px;
     display: flex;
     justify-content: center;
 }
