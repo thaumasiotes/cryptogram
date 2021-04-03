@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta charset="UTF-8"></meta>
+    <meta charset="UTF-8">
     <title>Cryptogram utility</title>
     <link href="cryptogram.css" rel="stylesheet">
     <script src="cryptogram.js"></script>
@@ -34,7 +34,6 @@
           </span>
         </label>
       </span>
-    </div>
     </div>
     <div class="cg_button_panel">
       <span class="cg_leftie">
