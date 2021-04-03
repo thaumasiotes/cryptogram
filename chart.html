@@ -15,31 +15,37 @@
       </div>
       <div id="cg_plaintext"><span></span></div>
     </div>
-    <div class="cg_buttons">
+    <div class="cg_button_panel">
       <span class="cg_leftie">
-        <span class="cg_checkbox">
-          <input type="checkbox" id="cg_alpha_only" checked
-                 onchange="cg.toggle_alpha_only()">
-          <label for="cg_alpha_only">Alphabetic only</label>
-        </span>
+        <label>
+          <span class="cg_button">
+            <input type="checkbox" id="cg_alpha_only" checked
+                   onchange="cg.toggle_alpha_only()">
+            <span>Alphabetic only</span>
+          </span>
+        </label>
       </span>
       <span class="cg_rightie">
-        <span class="cg_checkbox">
-          <input type="checkbox" id="cg_case_insensitive" checked
-                 onchange="cg.toggle_case_insensitive()">
-          <label for="cg_case_insensitive">Case-insensitive</label>
-        </span>
+        <label>
+          <span class="cg_button">
+            <input type="checkbox" id="cg_case_insensitive" checked
+                   onchange="cg.toggle_case_insensitive()">
+            <span>Case-insensitive</span>
+          </span>
+        </label>
       </span>
     </div>
     </div>
-    <div class="cg_buttons">
+    <div class="cg_button_panel">
       <span class="cg_leftie">
-        <button type="button" id="cg_reset_key" onclick="cg.reset_key()">
+        <button type="button" id="cg_reset_key" class="cg_button"
+                onclick="cg.reset_key()">
           Reset key
         </button>
       </span>
       <span class="cg_rightie">
-        <button type="button" id="cg_rot13" onclick="cg.rot13()">
+        <button type="button" id="cg_rot13" class="cg_button"
+                onclick="cg.rot13()">
           ROT13
         </button>
       </span>

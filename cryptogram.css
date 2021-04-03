@@ -1,29 +1,26 @@
 body {
     margin: 0;
+    background-color: #4fc3f7; /* Material Light Blue 300 */
 }
 
 #cg_panel {
     height: 80%;
-    background-color: plum;
     display: flex;
     justify-content: center;
 }
 
 #cg_ciphertext {
-    background-color: lightskyblue;
     width: 3.5in;
     height: 100%;
 }
 
 #cg_ciphertext > textarea {
-    width: 95%;
-    height: 95%;
-    margin-left: 2.5%;
-    margin-top: 2.5%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 #cg_map {
-    background-color: lavender;
     height: 100%;
     overflow-y: auto;
 }
@@ -36,7 +33,12 @@ body {
 
 /* Color every other row */
 .cg_map_grid > :nth-child(6n+1), .cg_map_grid > :nth-child(6n+2) {
-    background-color: paleturquoise;
+    background-color: #81d4fa; /* Material Light Blue 200 */
+}
+
+/* Color every other row */
+.cg_map_grid > :nth-child(6n+4), .cg_map_grid > :nth-child(6n+5) {
+    background-color: #039be5; /* Material Light Blue 600 */
 }
 
 /* Ciphertext glyphs */
@@ -51,55 +53,76 @@ body {
     padding-left: 5px;
 }
 
-.cg_map_grid > input {
-}
-
 #cg_plaintext {
-    background-color: seagreen;
+    background-color: white;
     width: 3.5in;
     height: 100%;
+
+    color: #757575; /* Material Gray 600 */
 
     overflow-y: auto;
 }
 
-#cg_plaintext > span {
-}
-
 #cg_plaintext p {
-    background-color: ivory;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
-.cg_buttons {
+.cg_deciphered {
+    color: black;
+}
+
+.cg_button_panel {
     display: flex;
-    padding-top: 5px;
+    padding-top: 8px;
 }
 
 .cg_leftie {
     flex: 1 50%;
-    background-color: seagreen;
     display: flex;
     justify-content: right;
+    padding-right: 4px;
 }
 
 .cg_rightie {
     flex: 1 50%;
-    background-color: lightskyblue;
     display: flex;
     justify-content: left;
+    padding-left: 4px;
 }
 
 .cg_leftie > * {
-    margin-right: 8px;
-}
-
-.cg_rightie > * {
     margin-left: 8px;
 }
 
-.cg_checkbox {
-    border: 1px;
-    border-color: black;
-    border-style: solid;
-    background-color: ivory;
-    padding-right: 3px;
+.cg_rightie > * {
+    margin-right: 8px;
+}
+
+.cg_button {
+    background-color: #1e88e5; /* Material Blue 600 */
+    height: 36px;
+    min-width: 64px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    border-style: none;
+    color: black;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cg_button:hover {
+    background-color: #2196f3; /* Material Blue 500 */
+}
+
+.cg_button:active {
+    background-color: #42a5f5; /* Material Blue 400 */
+}
+
+.cg_button > input {
+    margin-left: 0;
+    margin-right: 6px;
 }
